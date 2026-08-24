@@ -1,31 +1,15 @@
 name: "Continuous Integration"
 
 on:
-  pull_request:
   push:
-    branches:
-    tags:
+  pull_request:
 
 jobs:
-  matrix:
-    name: Generate job matrix
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.matrix.outputs.matrix }}
-    steps:
-      - name: Gather CI configuration
-        id: matrix
-        uses: laminas/laminas-ci-matrix-action@v1
-
   qa:
-    name: QA Checks
-    needs: [matrix]
-    runs-on: ${{ matrix.operatingSystem }}
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
-    steps:
-      - name: ${{ matrix.name }}
-        uses: laminas/laminas-continuous-integration-action@v1
-        with:
-          job: ${{ matrix.job }}
+    uses: php-db/phpdb-qa-tools/.github/workflows/continuous-integration.yml@0.1.x
+    secrets: inherit
+    with:
+      php-versions: '["8.3", "8.4", "8.5"]'
+      run-integration: true
+      enable-codecov: false
+      enable-infection: false

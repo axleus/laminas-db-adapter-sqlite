@@ -1,0 +1,1021 @@
+variant = "loose"
+
+[[issues]]
+file = "src/Container/PdoConnectionFactory.php"
+code = "yoda-conditions"
+message = "Use Yoda condition style for safer comparisons"
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "cyclomatic-complexity"
+message = "Class has high complexity."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "halstead"
+message = "Method has a high halstead volume and effort"
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "inline-variable-return"
+message = "Variable assignment can be inlined into the return statement."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "kan-defect"
+message = "Class has a high kan defect score."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "no-array-accumulation-in-loop"
+message = "`array_merge()` called inside a loop causes O(n²) array copying."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "no-else-clause"
+message = "Avoid `else` clauses."
+count = 3
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "no-empty"
+message = "Use of the `empty` construct."
+count = 3
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "no-isset"
+message = "Use of the `isset` construct."
+count = 5
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "no-multi-assignments"
+message = "Avoid multiple assignments in a single statement."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "no-negated-ternary"
+message = "Negated ternary condition."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "prefer-array-spread"
+message = "Use the array spread operator instead of `array_merge()`."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "prefer-early-continue"
+message = "Consider using early continue pattern to reduce nesting."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "string-style"
+message = "String concatenation can be replaced with interpolation."
+count = 9
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "tagged-todo"
+message = "TODO should be tagged with (@username) or (#issue)."
+count = 3
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "too-many-methods"
+message = "Class has too many methods."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "yoda-conditions"
+message = "Use Yoda condition style for safer comparisons"
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "assert-description"
+message = "Missing description in assert function."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "no-else-clause"
+message = "Avoid `elseif` clauses."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "no-empty-catch-clause"
+message = "Do not use empty `catch` blocks."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "no-fully-qualified-global-class-like"
+message = "Fully-qualified class-like reference detected."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "string-style"
+message = "String concatenation can be replaced with interpolation."
+count = 2
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "yoda-conditions"
+message = "Use Yoda condition style for safer comparisons"
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "no-empty"
+message = "Use of the `empty` construct."
+count = 2
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "no-fully-qualified-global-class-like"
+message = "Fully-qualified class-like reference detected."
+count = 2
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "prefer-arrow-function"
+message = "This closure can be simplified to a more concise arrow function."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "string-style"
+message = "String concatenation can be replaced with interpolation."
+count = 2
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "no-negated-ternary"
+message = "Negated ternary condition."
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "string-style"
+message = "String concatenation can be replaced with interpolation."
+count = 4
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "yoda-conditions"
+message = "Use Yoda condition style for safer comparisons"
+count = 7
+
+[[issues]]
+file = "test/integration/AdapterPlatformTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 1
+
+[[issues]]
+file = "test/integration/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteValueWithPdoSqlite`."
+count = 1
+
+[[issues]]
+file = "test/integration/AdapterPlatformTest.php"
+code = "strict-assertions"
+message = "Use strict assertions in PHPUnit tests."
+count = 1
+
+[[issues]]
+file = "test/integration/Container/PdoConnectionFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 3
+
+[[issues]]
+file = "test/integration/Container/PdoConnectionFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsPdoConnection`."
+count = 1
+
+[[issues]]
+file = "test/integration/Container/PdoDriverInterfaceFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 2
+
+[[issues]]
+file = "test/integration/Container/PdoDriverInterfaceFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsPdoDriver`."
+count = 1
+
+[[issues]]
+file = "test/integration/Container/PdoResultFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 2
+
+[[issues]]
+file = "test/integration/Container/PdoResultFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsPdoResult`."
+count = 1
+
+[[issues]]
+file = "test/integration/Container/PdoStatementFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 2
+
+[[issues]]
+file = "test/integration/Container/PdoStatementFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsPdoStatement`."
+count = 1
+
+[[issues]]
+file = "test/integration/Container/SqliteMetadataFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 2
+
+[[issues]]
+file = "test/integration/Container/SqliteMetadataFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testFactoryReturnsMysqlMetadata`."
+count = 1
+
+[[issues]]
+file = "test/integration/Container/TestAsset/SetupTrait.php"
+code = "yoda-conditions"
+message = "Use Yoda condition style for safer comparisons"
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/AbstractAdapterTestCase.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 9
+
+[[issues]]
+file = "test/integration/Pdo/AbstractAdapterTestCase.php"
+code = "braced-string-interpolation"
+message = "Unbraced variable in string interpolation."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/AbstractAdapterTestCase.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testConnection`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/AbstractAdapterTestCase.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testDriverDisconnectAfterQuoteWithPlatform`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/AbstractAdapterTestCase.php"
+code = "yoda-conditions"
+message = "Use Yoda condition style for safer comparisons"
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/ConnectionIntegrationTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 11
+
+[[issues]]
+file = "test/integration/Pdo/ConnectionIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testConnectReturnsConnectionWhenResourceSet`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/ConnectionIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testConnect`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/ConnectionIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testDisconnect`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/ConnectionIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetCurrentSchema`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/ConnectionIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetResource`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/ConnectionIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testIsConnected`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 7
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testExecute`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetResource`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetSql`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testIsPrepared`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testPrepare`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetSql`."
+count = 1
+
+[[issues]]
+file = "test/integration/Pdo/StatementTest.php"
+code = "strict-assertions"
+message = "Use strict assertions in PHPUnit tests."
+count = 2
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 27
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "no-error-control-operator"
+message = "Unsafe use of error control operator `@`."
+count = 4
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testConstructWithPdoDriver`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testConstructWithPdo`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetIdentifierSeparator`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetNameReturnsSqlite`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetName`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetQuoteIdentifierSymbol`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetQuoteValueSymbol`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetSqlPlatformDecorator`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testPlatformNameConstant`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteIdentifierChain`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteIdentifierInFragment`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteIdentifier`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteTrustedValue`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteValueList`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteValueThrowsExeceptionWithoutDriverSupport`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testQuoteValue`."
+count = 1
+
+[[issues]]
+file = "test/unit/AdapterPlatformTest.php"
+code = "strict-assertions"
+message = "Use strict assertions in PHPUnit tests."
+count = 21
+
+[[issues]]
+file = "test/unit/ConfigProviderTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 13
+
+[[issues]]
+file = "test/unit/ConfigProviderTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesContainsExpectedAliases`."
+count = 1
+
+[[issues]]
+file = "test/unit/ConfigProviderTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesContainsMetadataAlias`."
+count = 1
+
+[[issues]]
+file = "test/unit/ConfigProviderTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesContainsMetadataFactory`."
+count = 1
+
+[[issues]]
+file = "test/unit/ConfigProviderTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesReturnsCorrectStructure`."
+count = 1
+
+[[issues]]
+file = "test/unit/ConfigProviderTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsCorrectStructure`."
+count = 1
+
+[[issues]]
+file = "test/unit/ConfigProviderTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsExpectedStructure`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/MetadataInterfaceFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/MetadataInterfaceFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsMetadata`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoConnectionFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoConnectionFactoryTest.php"
+code = "literal-named-argument"
+message = "Literal argument `null` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoConnectionFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsConnection`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoConnectionFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeWithNullOptionsThrows`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoConnectionFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeWithoutConnectionConfigThrows`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoDriverInterfaceFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoDriverInterfaceFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testFactoryExists`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoResultFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoResultFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsResult`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoStatementFactoryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 2
+
+[[issues]]
+file = "test/unit/Container/PdoStatementFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsStatementWithEmptyOptions`."
+count = 1
+
+[[issues]]
+file = "test/unit/Container/PdoStatementFactoryTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsStatementWithOptions`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ConnectionTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 3
+
+[[issues]]
+file = "test/unit/Pdo/ConnectionTest.php"
+code = "no-empty-catch-clause"
+message = "Do not use empty `catch` blocks."
+count = 2
+
+[[issues]]
+file = "test/unit/Pdo/ConnectionTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testArrayOfConnectionParametersCreatesCorrectDsn`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ConnectionTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDsn`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ConnectionTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testResource`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/DriverTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/DriverTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testFormatParameterNameWithInvalidCharacters`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/DriverTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testFormatParameterName`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/Feature/SqliteRowCounterTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/Feature/SqliteRowCounterTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testRowCounterExists`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "assert-description"
+message = "Missing description in assert function."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 39
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-first-class-callable"
+message = "Use first-class callable syntax `...` instead of a arrow function."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testBufferIsCallableWithNoEffect`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testCountCachesResultFromClosure`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testCountCachesResultFromStatementRowCount`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testCountWithClosureInvokesClosureAndReturnsValue`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testCountWithIntReturnsProvidedValue`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testCountWithNoRowCountFallsBackToStatementRowCount`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testCurrentReturnsSameDataOnConsecutiveCalls`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testFetchModeAcceptsNamedMode`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testFetchModeObjReturnsStdClass`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetAffectedRowsDelegatesToRowCount`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetFetchModeDefaultIsAssoc`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetFieldCountDelegatesToColumnCount`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetGeneratedValueReturnsInitializedValue`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetGeneratedValueReturnsNullByDefault`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetQueryResultClonesGivenPrototypeRatherThanMutatingIt`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetQueryResultInitializesReturnedResultSetWithThisResult`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetQueryResultReturnsDefaultResultSetPrototypeWhenNoneGiven`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetQueryResultThrowsWhenResultIsNotAQueryResult`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetResourceReturnsPdoStatement`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testInitializeStoresResourceAndValues`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testIsBufferedReturnsFalse`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testIsQueryResultReturnsFalseWhenNoColumns`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testIsQueryResultReturnsTrueWhenColumnsExist`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testNextAdvancesPositionAndFetchesData`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testRewindResetsIterationToStart`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testRewindThrowsExceptionOnForwardOnlyAfterAdvancing`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetFetchModeStoresValidMode`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetFetchModeThrowsOnInvalidFetchMode`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetFetchModeThrowsOnInvalidMode`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetStatementModeThrowsOnInvalidMode`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetStatementModeToForward`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetStatementModeToScrollable`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testValidReturnsFalseWhenCurrentDataIsFalse`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testValidReturnsTrueWhenCurrentDataExists`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/ResultTest.php"
+code = "strict-assertions"
+message = "Use strict assertions in PHPUnit tests."
+count = 6
+
+[[issues]]
+file = "test/unit/Pdo/StatementIntegrationTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 12
+
+[[issues]]
+file = "test/unit/Pdo/StatementIntegrationTest.php"
+code = "no-assign-in-argument"
+message = "Avoid assignments in function call arguments."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/StatementIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testStatementExecuteWillConvertPhpBoolToPdoBoolWhenBinding`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/StatementIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testStatementExecuteWillUsePdoIntForIntWhenBinding`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/StatementIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testStatementExecuteWillUsePdoStrByDefaultWhenBinding`."
+count = 1
+
+[[issues]]
+file = "test/unit/Pdo/StatementIntegrationTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testStatementExecuteWillUsePdoStrForStringIntegerWhenBinding`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/PlatformTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 3
+
+[[issues]]
+file = "test/unit/Sql/PlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testConstructorSetsTypeDecorators`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/PlatformTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSelectDecoratorIsRegistered`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 13
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testProcessLimitWithLimitAndParameterContainer`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testProcessLimitWithLimit`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testProcessLimitWithoutLimitAndWithoutOffset`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testProcessLimitWithoutLimitButWithOffset`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testProcessOffsetWithOffsetAndParameterContainer`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testProcessOffsetWithOffset`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testProcessOffsetWithoutOffset`."
+count = 1
+
+[[issues]]
+file = "test/unit/Sql/SelectDecoratorTest.php"
+code = "prefer-test-attribute"
+message = "Use `#[Test]` attribute instead of `test` prefix on method `testSetSubject`."
+count = 1
