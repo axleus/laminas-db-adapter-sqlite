@@ -30,22 +30,6 @@ final class ConnectionIntegrationTest extends TestCase
 {
     use SetupTrait;
 
-    public function testGetCurrentSchema(): void
-    {
-        $connection = $this->getAdapter()->getDriver()->getConnection();
-        self::assertIsString($connection->getCurrentSchema());
-    }
-
-    public function testGetResource(): void
-    {
-        $connection = $this->getAdapter()->getDriver()->getConnection();
-        $connection->connect();
-
-        self::assertInstanceOf(PDO::class, $connection->getResource());
-
-        $connection->disconnect();
-    }
-
     public function testConnect(): void
     {
         $connection = $this->getAdapter()->getDriver()->getConnection();
@@ -53,26 +37,6 @@ final class ConnectionIntegrationTest extends TestCase
         self::assertTrue($connection->isConnected());
 
         $connection->disconnect();
-    }
-
-    public function testIsConnected(): void
-    {
-        $connection = $this->getAdapter()->getDriver()->getConnection();
-        self::assertFalse($connection->isConnected());
-        self::assertSame($connection, $connection->connect());
-        self::assertTrue($connection->isConnected());
-
-        $connection->disconnect();
-        //unset($connection);
-    }
-
-    public function testDisconnect(): void
-    {
-        $connection = $this->getAdapter()->getDriver()->getConnection();
-        $connection->connect();
-        self::assertTrue($connection->isConnected());
-        $connection->disconnect();
-        self::assertFalse($connection->isConnected());
     }
 
     public function testConnectReturnsConnectionWhenResourceSet(): void
@@ -90,6 +54,43 @@ final class ConnectionIntegrationTest extends TestCase
         unset($resource);
     }
 
+    public function testDisconnect(): void
+    {
+        $connection = $this->getAdapter()->getDriver()->getConnection();
+        $connection->connect();
+        self::assertTrue($connection->isConnected());
+        $connection->disconnect();
+        self::assertFalse($connection->isConnected());
+    }
+
+    public function testGetCurrentSchema(): void
+    {
+        $connection = $this->getAdapter()->getDriver()->getConnection();
+        self::assertIsString($connection->getCurrentSchema());
+    }
+
+    public function testGetResource(): void
+    {
+        $connection = $this->getAdapter()->getDriver()->getConnection();
+        $connection->connect();
+
+        self::assertInstanceOf(PDO::class, $connection->getResource());
+
+        $connection->disconnect();
+    }
+
+    public function testIsConnected(): void
+    {
+        $connection = $this->getAdapter()->getDriver()->getConnection();
+        self::assertFalse($connection->isConnected());
+        self::assertSame($connection, $connection->connect());
+        self::assertTrue($connection->isConnected());
+
+        $connection->disconnect();
+
+        //unset($connection);
+    }
+
     // public function testBeginTransaction(): never
     // {
     //     // Remove the following lines when you implement this test.
@@ -97,7 +98,6 @@ final class ConnectionIntegrationTest extends TestCase
     //         'This test has not been implemented yet.'
     //     );
     // }
-
     // public function testCommit(): never
     // {
     //     // Remove the following lines when you implement this test.
@@ -105,7 +105,6 @@ final class ConnectionIntegrationTest extends TestCase
     //         'This test has not been implemented yet.'
     //     );
     // }
-
     // public function testRollback(): never
     // {
     //     // Remove the following lines when you implement this test.
@@ -113,7 +112,6 @@ final class ConnectionIntegrationTest extends TestCase
     //         'This test has not been implemented yet.'
     //     );
     // }
-
     // public function testGetLastGeneratedValue(): never
     // {
     //     $this->markTestIncomplete('Need to create a temporary sequence.');

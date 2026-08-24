@@ -38,27 +38,35 @@ final class ConfigProviderTest extends TestCase
         StatementInterface::class     => Statement::class,
         MetadataInterface::class      => Metadata\Source::class,
     ];
+
     private ConfigProvider $configProvider;
 
-    protected function setUp(): void
+    public function testGetDependenciesContainsExpectedAliases(): void
     {
-        $this->configProvider = new ConfigProvider();
+        $config = $this->configProvider->getDependencies();
+        self::assertEquals(self::EXPECTED_ALIASES, $config['aliases']);
     }
 
-    public function testInvokeReturnsExpectedStructure(): void
+    public function testGetDependenciesContainsMetadataAlias(): void
     {
-        $config = ($this->configProvider)();
+        $dependencies = $this->configProvider->getDependencies();
 
-        self::assertNotEmpty($config);
-        self::assertArrayHasKey('dependencies', $config);
+        self::assertArrayHasKey(MetadataInterface::class, $dependencies['aliases']);
+        self::assertSame(
+            Metadata\Source::class,
+            $dependencies['aliases'][MetadataInterface::class],
+        );
     }
 
-    public function testInvokeReturnsCorrectStructure(): void
+    public function testGetDependenciesContainsMetadataFactory(): void
     {
-        $config = (new ConfigProvider())();
-        self::assertArrayHasKey('dependencies', $config);
-        self::assertArrayHasKey('aliases', $config['dependencies']);
-        self::assertArrayHasKey('factories', $config['dependencies']);
+        $dependencies = $this->configProvider->getDependencies();
+
+        self::assertArrayHasKey(Metadata\Source::class, $dependencies['factories']);
+        self::assertSame(
+            Container\MetadataInterfaceFactory::class,
+            $dependencies['factories'][Metadata\Source::class],
+        );
     }
 
     public function testGetDependenciesReturnsCorrectStructure(): void
@@ -70,31 +78,24 @@ final class ConfigProviderTest extends TestCase
         self::assertArrayHasKey('factories', $dependencies);
     }
 
-    public function testGetDependenciesContainsMetadataAlias(): void
+    public function testInvokeReturnsCorrectStructure(): void
     {
-        $dependencies = $this->configProvider->getDependencies();
-
-        self::assertArrayHasKey(MetadataInterface::class, $dependencies['aliases']);
-        self::assertSame(
-            Metadata\Source::class,
-            $dependencies['aliases'][MetadataInterface::class]
-        );
+        $config = (new ConfigProvider())();
+        self::assertArrayHasKey('dependencies', $config);
+        self::assertArrayHasKey('aliases', $config['dependencies']);
+        self::assertArrayHasKey('factories', $config['dependencies']);
     }
 
-    public function testGetDependenciesContainsMetadataFactory(): void
+    public function testInvokeReturnsExpectedStructure(): void
     {
-        $dependencies = $this->configProvider->getDependencies();
+        $config = ($this->configProvider)();
 
-        self::assertArrayHasKey(Metadata\Source::class, $dependencies['factories']);
-        self::assertSame(
-            Container\MetadataInterfaceFactory::class,
-            $dependencies['factories'][Metadata\Source::class]
-        );
+        self::assertNotEmpty($config);
+        self::assertArrayHasKey('dependencies', $config);
     }
 
-    public function testGetDependenciesContainsExpectedAliases(): void
+    protected function setUp(): void
     {
-        $config = $this->configProvider->getDependencies();
-        self::assertEquals(self::EXPECTED_ALIASES, $config['aliases']);
+        $this->configProvider = new ConfigProvider();
     }
 }

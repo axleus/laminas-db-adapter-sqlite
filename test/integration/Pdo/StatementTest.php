@@ -26,6 +26,15 @@ final class StatementTest extends TestCase
 {
     use SetupTrait;
 
+    public function testExecute(): void
+    {
+        /** @var StatementInterface&Statement $statement */
+        $statement = $this->getAdapter()->getDriver()->createStatement();
+        //$statement->initialize($pdo);
+        $statement->prepare('SELECT 1');
+        self::assertInstanceOf(Result::class, $statement->execute());
+    }
+
     public function testGetResource(): void
     {
         /** @var PDO $pdo */
@@ -39,29 +48,11 @@ final class StatementTest extends TestCase
         self::assertSame($stmt, $statement->getResource());
     }
 
-    public function testSetSql(): void
-    {
-        /** @var StatementInterface&Statement $statement */
-        $statement = $this->getAdapter()->getDriver()->createStatement();
-        $statement->setSql('SELECT 1');
-        self::assertEquals('SELECT 1', $statement->getSql());
-    }
-
     public function testGetSql(): void
     {
         $statement = $this->getAdapter()->getDriver()->createStatement();
         $statement->setSql('SELECT 1');
         self::assertEquals('SELECT 1', $statement->getSql());
-    }
-
-    /**
-     * @todo Implement testPrepare().
-     */
-    public function testPrepare(): void
-    {
-        /** @var StatementInterface&Statement $statement */
-        $statement = $this->getAdapter()->getDriver()->createStatement();
-        self::assertInstanceOf(StatementInterface::class, $statement->prepare('SELECT 1'));
     }
 
     public function testIsPrepared(): void
@@ -74,12 +65,21 @@ final class StatementTest extends TestCase
         self::assertTrue($statement->isPrepared());
     }
 
-    public function testExecute(): void
+    /**
+     * @todo Implement testPrepare().
+     */
+    public function testPrepare(): void
     {
         /** @var StatementInterface&Statement $statement */
         $statement = $this->getAdapter()->getDriver()->createStatement();
-        //$statement->initialize($pdo);
-        $statement->prepare('SELECT 1');
-        self::assertInstanceOf(Result::class, $statement->execute());
+        self::assertInstanceOf(StatementInterface::class, $statement->prepare('SELECT 1'));
+    }
+
+    public function testSetSql(): void
+    {
+        /** @var StatementInterface&Statement $statement */
+        $statement = $this->getAdapter()->getDriver()->createStatement();
+        $statement->setSql('SELECT 1');
+        self::assertEquals('SELECT 1', $statement->getSql());
     }
 }

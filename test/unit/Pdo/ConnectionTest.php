@@ -19,25 +19,20 @@ final class ConnectionTest extends TestCase
     //protected string $dsn = 'sqlite::memory:';
     protected string $dsn = 'sqlite::memory:';
 
-    /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    #[Override]
-    protected function setUp(): void
+    #[Group('2622')]
+    public function testArrayOfConnectionParametersCreatesCorrectDsn(): void
     {
-        $this->connection = new Connection([
-            'dsn' => $this->dsn,
+        $this->connection->setConnectionParameters([
+            'dsn' => 'sqlite::memory:',
         ]);
-    }
+        try {
+            $this->connection->connect();
+        } catch (Exception) {
+        }
+        $responseString = $this->connection->getDsn();
 
-    /**
-     * Test getResource method tries to connect to  the database, it should never return null
-     */
-    public function testResource(): void
-    {
-        $this->expectNotToPerformAssertions();
-        $this->connection->getResource();
+        self::assertStringStartsWith('sqlite:', $responseString);
+        self::assertStringContainsString('memory', $responseString);
     }
 
     /**
@@ -55,19 +50,24 @@ final class ConnectionTest extends TestCase
         self::assertEquals($this->dsn, $responseString);
     }
 
-    #[Group('2622')]
-    public function testArrayOfConnectionParametersCreatesCorrectDsn(): void
+    /**
+     * Test getResource method tries to connect to  the database, it should never return null
+     */
+    public function testResource(): void
     {
-        $this->connection->setConnectionParameters([
-            'dsn' => 'sqlite::memory:',
-        ]);
-        try {
-            $this->connection->connect();
-        } catch (Exception) {
-        }
-        $responseString = $this->connection->getDsn();
+        $this->expectNotToPerformAssertions();
+        $this->connection->getResource();
+    }
 
-        self::assertStringStartsWith('sqlite:', $responseString);
-        self::assertStringContainsString('memory', $responseString);
+    /**
+     * Sets up the fixture, for example, opens a network connection.
+     * This method is called before a test is executed.
+     */
+    #[Override]
+    protected function setUp(): void
+    {
+        $this->connection = new Connection([
+            'dsn' => $this->dsn,
+        ]);
     }
 }

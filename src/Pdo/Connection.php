@@ -22,29 +22,16 @@ use function strtolower;
 
 class Connection extends AbstractPdoConnection
 {
-    public final const CURRENT_SCHEMA = 'main';
+    final public const CURRENT_SCHEMA = 'main';
 
     public function __construct(
-        PDO|array $connectionParameters
+        PDO|array $connectionParameters,
     ) {
         if (is_array($connectionParameters)) {
             $this->setConnectionParameters($connectionParameters);
         } elseif ($connectionParameters instanceof PDO) {
             $this->setResource($connectionParameters);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    #[Override]
-    public function getCurrentSchema(): string|false
-    {
-        if (! $this->isConnected()) {
-            $this->connect();
-        }
-
-        return self::CURRENT_SCHEMA;
     }
 
     /**
@@ -85,22 +72,22 @@ class Connection extends AbstractPdoConnection
         if (! is_string($dsn)) {
             throw new Exception\InvalidConnectionParametersException(
                 'A dsn was not provided',
-                $this->connectionParameters
+                $this->connectionParameters,
             );
         }
 
         if (! str_starts_with($dsn, 'sqlite:')) {
             Assert::fileExists(
                 $dsn,
-                'The provided DSN does not point to a valid file.'
+                'The provided DSN does not point to a valid file.',
             );
             Assert::readable(
                 $dsn,
-                'The provided DSN does not point to a readable file.'
+                'The provided DSN does not point to a readable file.',
             );
             Assert::writable(
                 $dsn,
-                'The provided DSN does not point to a writable file.'
+                'The provided DSN does not point to a writable file.',
             );
             $dsn = 'sqlite:' . $dsn;
         }
@@ -108,7 +95,10 @@ class Connection extends AbstractPdoConnection
         $this->dsn = $dsn;
 
         try {
-            $this->resource = new PDO(dsn: $dsn, options: $options);
+            $this->resource = new PDO(
+                dsn: $dsn,
+                options: $options,
+            );
             $this->resource->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $driverName = $this->resource->getAttribute(PDO::ATTR_DRIVER_NAME);
             assert(is_string($driverName));
@@ -122,6 +112,19 @@ class Connection extends AbstractPdoConnection
         }
 
         return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    #[Override]
+    public function getCurrentSchema(): string|false
+    {
+        if (! $this->isConnected()) {
+            $this->connect();
+        }
+
+        return self::CURRENT_SCHEMA;
     }
 
     /**

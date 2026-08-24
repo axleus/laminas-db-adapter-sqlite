@@ -18,37 +18,6 @@ final class SelectDecoratorTest extends TestCase
 {
     private SelectDecorator $decorator;
 
-    protected function setUp(): void
-    {
-        $this->decorator = new SelectDecorator();
-    }
-
-    public function testSetSubject(): void
-    {
-        $select = new Select();
-        $result = $this->decorator->setSubject($select);
-
-        self::assertSame($this->decorator, $result);
-
-        $reflection      = new ReflectionClass($this->decorator);
-        $subjectProperty = $reflection->getProperty('subject');
-        $subject         = $subjectProperty->getValue($this->decorator);
-
-        self::assertSame($select, $subject);
-    }
-
-    public function testProcessLimitWithoutLimitAndWithoutOffset(): void
-    {
-        $platformMock = $this->createMock(PlatformInterface::class);
-
-        $reflection = new ReflectionClass($this->decorator);
-        $method     = $reflection->getMethod('processLimit');
-
-        $result = $method->invoke($this->decorator, $platformMock);
-
-        self::assertNull($result);
-    }
-
     public function testProcessLimitWithLimit(): void
     {
         $this->decorator->limit(10);
@@ -88,6 +57,18 @@ final class SelectDecoratorTest extends TestCase
         self::assertSame(15, $parameterContainer->offsetGet('limit'));
     }
 
+    public function testProcessLimitWithoutLimitAndWithoutOffset(): void
+    {
+        $platformMock = $this->createMock(PlatformInterface::class);
+
+        $reflection = new ReflectionClass($this->decorator);
+        $method     = $reflection->getMethod('processLimit');
+
+        $result = $method->invoke($this->decorator, $platformMock);
+
+        self::assertNull($result);
+    }
+
     public function testProcessLimitWithoutLimitButWithOffset(): void
     {
         $this->decorator->offset(5);
@@ -100,18 +81,6 @@ final class SelectDecoratorTest extends TestCase
         $result = $method->invoke($this->decorator, $platformMock);
 
         self::assertSame([''], $result);
-    }
-
-    public function testProcessOffsetWithoutOffset(): void
-    {
-        $platformMock = $this->createMock(PlatformInterface::class);
-
-        $reflection = new ReflectionClass($this->decorator);
-        $method     = $reflection->getMethod('processOffset');
-
-        $result = $method->invoke($this->decorator, $platformMock);
-
-        self::assertNull($result);
     }
 
     public function testProcessOffsetWithOffset(): void
@@ -151,5 +120,36 @@ final class SelectDecoratorTest extends TestCase
         self::assertSame([':offset'], $result);
         self::assertTrue($parameterContainer->offsetExists('offset'));
         self::assertSame(25, $parameterContainer->offsetGet('offset'));
+    }
+
+    public function testProcessOffsetWithoutOffset(): void
+    {
+        $platformMock = $this->createMock(PlatformInterface::class);
+
+        $reflection = new ReflectionClass($this->decorator);
+        $method     = $reflection->getMethod('processOffset');
+
+        $result = $method->invoke($this->decorator, $platformMock);
+
+        self::assertNull($result);
+    }
+
+    public function testSetSubject(): void
+    {
+        $select = new Select();
+        $result = $this->decorator->setSubject($select);
+
+        self::assertSame($this->decorator, $result);
+
+        $reflection      = new ReflectionClass($this->decorator);
+        $subjectProperty = $reflection->getProperty('subject');
+        $subject         = $subjectProperty->getValue($this->decorator);
+
+        self::assertSame($select, $subject);
+    }
+
+    protected function setUp(): void
+    {
+        $this->decorator = new SelectDecorator();
     }
 }

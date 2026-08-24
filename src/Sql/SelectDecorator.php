@@ -37,8 +37,8 @@ final class SelectDecorator extends Select implements PlatformDecoratorInterface
     /** @return null|string[]|int[] */
     protected function processLimit(
         PlatformInterface $platform,
-        DriverInterface|null $driver = null,
-        ParameterContainer|null $parameterContainer = null
+        ?DriverInterface $driver = null,
+        ?ParameterContainer $parameterContainer = null,
     ): ?array {
         if ($this->limit === null && $this->offset !== null) {
             return [''];
@@ -49,9 +49,11 @@ final class SelectDecorator extends Select implements PlatformDecoratorInterface
         if ($parameterContainer) {
             $paramPrefix = (string) $this->processInfo['paramPrefix'];
             $parameterContainer->offsetSet($paramPrefix . 'limit', $this->limit, ParameterContainer::TYPE_INTEGER);
-            return $driver !== null
-                ? [$driver->formatParameterName($paramPrefix . 'limit')]
-                : null;
+            return (
+                $driver !== null
+                    ? [$driver->formatParameterName($paramPrefix . 'limit')]
+                    : null
+            );
         }
 
         return [$this->limit];
@@ -59,8 +61,8 @@ final class SelectDecorator extends Select implements PlatformDecoratorInterface
 
     protected function processOffset(
         PlatformInterface $platform,
-        DriverInterface|null $driver = null,
-        ParameterContainer|null $parameterContainer = null
+        ?DriverInterface $driver = null,
+        ?ParameterContainer $parameterContainer = null,
     ): ?array {
         if ($this->offset === null) {
             return null;
