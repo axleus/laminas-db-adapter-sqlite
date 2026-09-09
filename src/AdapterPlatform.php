@@ -19,7 +19,7 @@ class AdapterPlatform extends AbstractPlatform
 
     protected array $quoteIdentifier = ['"', '"'];
 
-    /** @var PDO */
+    /** @var PDO $resource */
     protected $resource;
 
     /**
