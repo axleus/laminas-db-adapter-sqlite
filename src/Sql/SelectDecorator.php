@@ -30,7 +30,7 @@ final class SelectDecorator extends Select implements PlatformDecoratorInterface
     {
         parent::localizeVariables();
         if ($this->limit === null && $this->offset !== null) {
-            $this->specifications[self::LIMIT] = 'LIMIT 18446744073709551615';
+            $this->setSpecification(self::LIMIT, 'LIMIT 18446744073709551615');
         }
     }
 
