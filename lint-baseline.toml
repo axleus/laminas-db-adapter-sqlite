@@ -62,12 +62,6 @@ count = 1
 
 [[issues]]
 file = "src/Metadata/Source.php"
-code = "no-negated-ternary"
-message = "Negated ternary condition."
-count = 1
-
-[[issues]]
-file = "src/Metadata/Source.php"
 code = "prefer-array-spread"
 message = "Use the array spread operator instead of `array_merge()`."
 count = 2
@@ -94,12 +88,6 @@ count = 3
 file = "src/Metadata/Source.php"
 code = "too-many-methods"
 message = "Class has too many methods."
-count = 1
-
-[[issues]]
-file = "src/Metadata/Source.php"
-code = "yoda-conditions"
-message = "Use Yoda condition style for safer comparisons"
 count = 1
 
 [[issues]]
@@ -497,48 +485,6 @@ file = "test/unit/AdapterPlatformTest.php"
 code = "strict-assertions"
 message = "Use strict assertions in PHPUnit tests."
 count = 21
-
-[[issues]]
-file = "test/unit/ConfigProviderTest.php"
-code = "assertion-style"
-message = "Inconsistent assertions style."
-count = 13
-
-[[issues]]
-file = "test/unit/ConfigProviderTest.php"
-code = "prefer-test-attribute"
-message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesContainsExpectedAliases`."
-count = 1
-
-[[issues]]
-file = "test/unit/ConfigProviderTest.php"
-code = "prefer-test-attribute"
-message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesContainsMetadataAlias`."
-count = 1
-
-[[issues]]
-file = "test/unit/ConfigProviderTest.php"
-code = "prefer-test-attribute"
-message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesContainsMetadataFactory`."
-count = 1
-
-[[issues]]
-file = "test/unit/ConfigProviderTest.php"
-code = "prefer-test-attribute"
-message = "Use `#[Test]` attribute instead of `test` prefix on method `testGetDependenciesReturnsCorrectStructure`."
-count = 1
-
-[[issues]]
-file = "test/unit/ConfigProviderTest.php"
-code = "prefer-test-attribute"
-message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsCorrectStructure`."
-count = 1
-
-[[issues]]
-file = "test/unit/ConfigProviderTest.php"
-code = "prefer-test-attribute"
-message = "Use `#[Test]` attribute instead of `test` prefix on method `testInvokeReturnsExpectedStructure`."
-count = 1
 
 [[issues]]
 file = "test/unit/Container/MetadataInterfaceFactoryTest.php"
