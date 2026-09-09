@@ -13,13 +13,13 @@ final class SqliteRowCounterTest extends TestCase
 {
     private SqliteRowCounter $rowCounter;
 
-    protected function setUp(): void
-    {
-        $this->rowCounter = new SqliteRowCounter();
-    }
-
     public function testRowCounterExists(): void
     {
         self::assertInstanceOf(SqliteRowCounter::class, $this->rowCounter);
+    }
+
+    protected function setUp(): void
+    {
+        $this->rowCounter = new SqliteRowCounter();
     }
 }

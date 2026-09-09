@@ -19,65 +19,78 @@ use function strtoupper;
 
 final class Source extends AbstractSource
 {
-    #[Override]
-    protected function loadSchemaData(): void
+    protected function buildRegularExpression(array $re): string
     {
-        if (isset($this->data['schemas'])) {
-            return;
+        foreach ($re as &$value) {
+            if (is_array($value)) {
+                $value = '(?:' . implode('\\s*+', $value) . '\\s*+)?';
+            } else {
+                $value .= '\\s*+';
+            }
         }
-        $this->prepareDataHierarchy('schemas');
-
-        $results = $this->fetchPragma('database_list');
-        // proposed phpstan fix
-        $schemas = $results !== [] ? [] : null;
-        // end proposed fix
-        foreach ($results as $row) {
-            $schemas[] = $row['name'];
-        }
-        $this->data['schemas'] = $schemas;
+        unset($value);
+        $re = '/^' . implode('\\s*+', $re) . '$/';
+        return $re;
     }
 
-    #[Override]
-    protected function loadTableNameData(string $schema): void
+    protected function fetchPragma(string $name, ?string $value = null, ?string $schema = null): array
     {
-        if (isset($this->data['table_names'][$schema])) {
-            return;
-        }
-        $this->prepareDataHierarchy('table_names', $schema);
-
-        // FEATURE: Filename?
-
         $p = $this->adapter->getPlatform();
 
-        $sql = 'SELECT "name", "type", "sql" FROM ' . $p->quoteIdentifierChain([$schema, 'sqlite_master'])
-             . ' WHERE "type" IN (\'table\',\'view\') AND "name" NOT LIKE \'sqlite_%\'';
+        $sql = 'PRAGMA ';
+
+        if (null !== $schema) {
+            $sql .= $p->quoteIdentifier($schema) . '.';
+        }
+        $sql .= $name;
+
+        if (null !== $value) {
+            $sql .= '(' . $p->quoteTrustedValue($value) . ')';
+        }
         /** @var ResultSet $results */
         $results = $this->adapter->query($sql, AdapterInterface::QUERY_MODE_EXECUTE);
-        $tables  = [];
-        foreach ($results->toArray() as $row) {
-            if ('table' === $row['type']) {
-                $table = [
-                    'table_type'      => 'BASE TABLE',
-                    'view_definition' => null, // VIEW only
-                    'check_option'    => null, // VIEW only
-                    'is_updatable'    => null, // VIEW only
-                ];
-            } else {
-                $table = [
-                    'table_type'      => 'VIEW',
-                    'view_definition' => null,
-                    'check_option'    => 'NONE',
-                    'is_updatable'    => false,
-                ];
-
-                // Parse out extra data
-                if (null !== ($data = $this->parseView($row['sql']))) {
-                    $table = array_merge($table, $data);
-                }
-            }
-            $tables[$row['name']] = $table;
+        if ($results instanceof ResultSetInterface) {
+            return $results->toArray();
         }
-        $this->data['table_names'][$schema] = $tables;
+        return [];
+    }
+
+    protected function getIdentifierChainRegularExpression(): string
+    {
+        static $re = null;
+        if (null === $re) {
+            $identifier = $this->getIdentifierRegularExpression();
+            $re         = $identifier . '(?:\\s*\\.\\s*' . $identifier . ')*+';
+        }
+        return $re;
+    }
+
+    protected function getIdentifierListRegularExpression(): string
+    {
+        static $re = null;
+        if (null === $re) {
+            $identifier = $this->getIdentifierRegularExpression();
+            $re         = $identifier . '(?:\\s*,\\s*' . $identifier . ')*+';
+        }
+        return $re;
+    }
+
+    protected function getIdentifierRegularExpression(): string
+    {
+        static $re = null;
+        if (null === $re) {
+            $re =
+                '(?:'
+                . implode('|', [
+                    '"(?:[^"\\\\]++|\\\\.)*+"',
+                    '`(?:[^`]++|``)*+`',
+                    '\\[[^\\]]+\\]',
+                    '[^\\s\\.]+',
+                ])
+                . ')';
+        }
+
+        return $re;
     }
 
     #[Override]
@@ -107,6 +120,7 @@ final class Source extends AbstractSource
                 'numeric_unsigned'         => null,
                 'erratas'                  => [],
             ];
+
             // TODO: populate character_ and numeric_values with correct info
         }
 
@@ -200,6 +214,66 @@ final class Source extends AbstractSource
     }
 
     #[Override]
+    protected function loadSchemaData(): void
+    {
+        if (isset($this->data['schemas'])) {
+            return;
+        }
+        $this->prepareDataHierarchy('schemas');
+
+        $schemas = [];
+        foreach ($this->fetchPragma('database_list') as $row) {
+            $schemas[] = (string) $row['name'];
+        }
+        $this->data['schemas'] = $schemas;
+    }
+
+    #[Override]
+    protected function loadTableNameData(string $schema): void
+    {
+        if (isset($this->data['table_names'][$schema])) {
+            return;
+        }
+        $this->prepareDataHierarchy('table_names', $schema);
+
+        // FEATURE: Filename?
+
+        $p = $this->adapter->getPlatform();
+
+        $sql =
+            'SELECT "name", "type", "sql" FROM '
+            . $p->quoteIdentifierChain([$schema, 'sqlite_master'])
+            . ' WHERE "type" IN (\'table\',\'view\') AND "name" NOT LIKE \'sqlite_%\'';
+        /** @var ResultSet $results */
+        $results = $this->adapter->query($sql, AdapterInterface::QUERY_MODE_EXECUTE);
+        $tables  = [];
+        foreach ($results->toArray() as $row) {
+            if ('table' === $row['type']) {
+                $table = [
+                    'table_type'      => 'BASE TABLE',
+                    'view_definition' => null, // VIEW only
+                    'check_option' => null, // VIEW only
+                    'is_updatable' => null, // VIEW only
+                ];
+            } else {
+                $table = [
+                    'table_type'      => 'VIEW',
+                    'view_definition' => null,
+                    'check_option'    => 'NONE',
+                    'is_updatable'    => false,
+                ];
+
+                // Parse out extra data
+                if (null !== ($data = $this->parseView($row['sql']))) {
+                    $table = array_merge($table, $data);
+                }
+            }
+            $tables[$row['name']] = $table;
+        }
+        $this->data['table_names'][$schema] = $tables;
+    }
+
+    #[Override]
     protected function loadTriggerData(string $schema): void
     {
         if (isset($this->data['triggers'][$schema])) {
@@ -210,24 +284,25 @@ final class Source extends AbstractSource
 
         $p = $this->adapter->getPlatform();
 
-        $sql = 'SELECT "name", "tbl_name", "sql" FROM '
-             . $p->quoteIdentifierChain([$schema, 'sqlite_master'])
-             . ' WHERE "type" = \'trigger\'';
+        $sql =
+            'SELECT "name", "tbl_name", "sql" FROM '
+            . $p->quoteIdentifierChain([$schema, 'sqlite_master'])
+            . ' WHERE "type" = \'trigger\'';
         /** @var ResultSet $results */
         $results  = $this->adapter->query($sql, AdapterInterface::QUERY_MODE_EXECUTE);
         $triggers = [];
         foreach ($results->toArray() as $row) {
             $trigger = [
-                'trigger_name'               => $row['name'],
-                'event_manipulation'         => null, // in $row['sql']
-                'event_object_catalog'       => null,
-                'event_object_schema'        => $schema,
-                'event_object_table'         => $row['tbl_name'],
-                'action_order'               => 0,
-                'action_condition'           => null, // in $row['sql']
-                'action_statement'           => null, // in $row['sql']
-                'action_orientation'         => 'ROW',
-                'action_timing'              => null, // in $row['sql']
+                'trigger_name'       => $row['name'],
+                'event_manipulation' => null, // in $row['sql']
+                'event_object_catalog' => null,
+                'event_object_schema'  => $schema,
+                'event_object_table'   => $row['tbl_name'],
+                'action_order'         => 0,
+                'action_condition'     => null, // in $row['sql']
+                'action_statement' => null, // in $row['sql']
+                'action_orientation' => 'ROW',
+                'action_timing'      => null, // in $row['sql']
                 'action_reference_old_table' => null,
                 'action_reference_new_table' => null,
                 'action_reference_old_row'   => 'OLD',
@@ -243,55 +318,6 @@ final class Source extends AbstractSource
         }
 
         $this->data['triggers'][$schema] = $triggers;
-    }
-
-    protected function fetchPragma(string $name, ?string $value = null, ?string $schema = null): array
-    {
-        $p = $this->adapter->getPlatform();
-
-        $sql = 'PRAGMA ';
-
-        if (null !== $schema) {
-            $sql .= $p->quoteIdentifier($schema) . '.';
-        }
-        $sql .= $name;
-
-        if (null !== $value) {
-            $sql .= '(' . $p->quoteTrustedValue($value) . ')';
-        }
-        /** @var ResultSet $results */
-        $results = $this->adapter->query($sql, AdapterInterface::QUERY_MODE_EXECUTE);
-        if ($results instanceof ResultSetInterface) {
-            return $results->toArray();
-        }
-        return [];
-    }
-
-    /** @return null|array<string, mixed> */
-    protected function parseView(string $sql): ?array
-    {
-        static $re = null;
-        if (null === $re) {
-            $identifierChain = $this->getIdentifierChainRegularExpression();
-            $re              = $this->buildRegularExpression([
-                'CREATE',
-                ['TEMP|TEMPORARY'],
-                'VIEW',
-                ['IF', 'NOT', 'EXISTS'],
-                $identifierChain,
-                'AS',
-                '(?<view_definition>.+)',
-                [';'],
-            ]);
-        }
-
-        if (! preg_match($re, $sql, $matches)) {
-            return null;
-        }
-
-        return [
-            'view_definition' => $matches['view_definition'],
-        ];
     }
 
     /** @return null|array<string, mixed> */
@@ -353,52 +379,30 @@ final class Source extends AbstractSource
         return $data;
     }
 
-    protected function buildRegularExpression(array $re): string
-    {
-        foreach ($re as &$value) {
-            if (is_array($value)) {
-                $value = '(?:' . implode('\\s*+', $value) . '\\s*+)?';
-            } else {
-                $value .= '\\s*+';
-            }
-        }
-        unset($value);
-        $re = '/^' . implode('\\s*+', $re) . '$/';
-        return $re;
-    }
-
-    protected function getIdentifierRegularExpression(): string
+    /** @return null|array<string, mixed> */
+    protected function parseView(string $sql): ?array
     {
         static $re = null;
         if (null === $re) {
-            $re = '(?:' . implode('|', [
-                '"(?:[^"\\\\]++|\\\\.)*+"',
-                '`(?:[^`]++|``)*+`',
-                '\\[[^\\]]+\\]',
-                '[^\\s\\.]+',
-            ]) . ')';
+            $identifierChain = $this->getIdentifierChainRegularExpression();
+            $re              = $this->buildRegularExpression([
+                'CREATE',
+                ['TEMP|TEMPORARY'],
+                'VIEW',
+                ['IF', 'NOT', 'EXISTS'],
+                $identifierChain,
+                'AS',
+                '(?<view_definition>.+)',
+                [';'],
+            ]);
         }
 
-        return $re;
-    }
-
-    protected function getIdentifierChainRegularExpression(): string
-    {
-        static $re = null;
-        if (null === $re) {
-            $identifier = $this->getIdentifierRegularExpression();
-            $re         = $identifier . '(?:\\s*\\.\\s*' . $identifier . ')*+';
+        if (! preg_match($re, $sql, $matches)) {
+            return null;
         }
-        return $re;
-    }
 
-    protected function getIdentifierListRegularExpression(): string
-    {
-        static $re = null;
-        if (null === $re) {
-            $identifier = $this->getIdentifierRegularExpression();
-            $re         = $identifier . '(?:\\s*,\\s*' . $identifier . ')*+';
-        }
-        return $re;
+        return [
+            'view_definition' => $matches['view_definition'],
+        ];
     }
 }

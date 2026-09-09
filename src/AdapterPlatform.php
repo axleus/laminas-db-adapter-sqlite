@@ -13,13 +13,13 @@ use PhpDb\Sqlite\Sql\Platform;
 
 class AdapterPlatform extends AbstractPlatform
 {
-    public final const PLATFORM_NAME = 'SQLite';
+    final public const PLATFORM_NAME = 'SQLite';
+
     /** @var string[] */
 
     protected array $quoteIdentifier = ['"', '"'];
 
-    /** @var PDO */
-    protected $resource;
+    protected PdoDriverInterface|PDO|null $resource = null;
 
     /**
      * {@inheritDoc}
@@ -27,27 +27,25 @@ class AdapterPlatform extends AbstractPlatform
     protected string $quoteIdentifierTo = '\'';
 
     public function __construct(
-        protected readonly PdoDriverInterface|PDO|null $driver = null
-    ) {
+        protected readonly PdoDriverInterface|PDO|null $driver = null,
+    ) {}
+
+    /**
+     * {@inheritDoc}
+     */
+    #[Override]
+    public function getName(): string
+    {
+        return self::PLATFORM_NAME;
     }
 
     /**
      * {@inheritDoc}
      */
     #[Override]
-    public function quoteValue(string $value): string
+    public function getSqlPlatformDecorator(): PlatformDecoratorInterface
     {
-        $resource = $this->resource;
-
-        if ($resource instanceof PdoDriverInterface) {
-            $resource = $resource->getConnection()->getResource();
-        }
-
-        if ($resource instanceof PDO) {
-            return $resource->quote($value);
-        }
-
-        return parent::quoteValue($value);
+        return new Platform();
     }
 
     /**
@@ -73,17 +71,18 @@ class AdapterPlatform extends AbstractPlatform
      * {@inheritDoc}
      */
     #[Override]
-    public function getName(): string
+    public function quoteValue(string $value): string
     {
-        return self::PLATFORM_NAME;
-    }
+        $resource = $this->resource;
 
-    /**
-     * {@inheritDoc}
-     */
-    #[Override]
-    public function getSqlPlatformDecorator(): PlatformDecoratorInterface
-    {
-        return new Platform();
+        if ($resource instanceof PdoDriverInterface) {
+            $resource = $resource->getConnection()->getResource();
+        }
+
+        if ($resource instanceof PDO) {
+            return $resource->quote($value);
+        }
+
+        return parent::quoteValue($value);
     }
 }

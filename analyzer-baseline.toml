@@ -1,0 +1,751 @@
+variant = "loose"
+
+[[issues]]
+file = "src/AdapterPlatform.php"
+code = "class-must-be-final"
+message = 'Class `PhpDb\Sqlite\AdapterPlatform` should be declared `final`.'
+count = 1
+
+[[issues]]
+file = "src/AdapterPlatform.php"
+code = "falsable-return-statement"
+message = '''Function `PhpDb\Sqlite\AdapterPlatform::quoteTrustedValue` is declared to return `null|string` but possibly returns 'false' (inferred as `false|string`).'''
+count = 1
+
+[[issues]]
+file = "src/AdapterPlatform.php"
+code = "falsable-return-statement"
+message = '''Function `PhpDb\Sqlite\AdapterPlatform::quoteValue` is declared to return `string` but possibly returns 'false' (inferred as `false|string`).'''
+count = 1
+
+[[issues]]
+file = "src/AdapterPlatform.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `PhpDb\Sqlite\AdapterPlatform::quoteTrustedValue`: expected `null|string`, but found `false|string`.'
+count = 1
+
+[[issues]]
+file = "src/AdapterPlatform.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `PhpDb\Sqlite\AdapterPlatform::quoteValue`: expected `string`, but found `false|string`.'
+count = 1
+
+[[issues]]
+file = "src/AdapterPlatform.php"
+code = "missing-constant-type"
+message = "Class constant `PLATFORM_NAME` is missing a type hint."
+count = 1
+
+[[issues]]
+file = "src/AdapterPlatform.php"
+code = "possibly-invalid-argument"
+message = "Possible argument type mismatch for argument #1 of `PDO::quote`: expected `string`, but possibly received `bool|float|int|string`."
+count = 1
+
+[[issues]]
+file = "src/ConfigProvider.php"
+code = "imprecise-type"
+message = "Type `array` in return type of `__invoke` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/ConfigProvider.php"
+code = "imprecise-type"
+message = "Type `array` in return type of `getConfig` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/ConfigProvider.php"
+code = "imprecise-type"
+message = "Type `array` in return type of `getDependencies` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$options` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "missing-constant-type"
+message = "Class constant `ADAPTER_SERVICE_NAME` is missing a type hint."
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `PhpDb\Metadata\Source\AbstractSource::__construct`: expected `PhpDb\Adapter\AdapterInterface&PhpDb\Adapter\SchemaAwareInterface`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Psr\Container\ContainerInterface::get`: expected `string`, but found `nonnull`.'
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "mixed-assignment"
+message = "Assigning `nonnull` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `Psr\Container\ContainerExceptionInterface` in `PhpDb\Sqlite\Container\MetadataInterfaceFactory::__invoke`.'
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `Psr\Container\NotFoundExceptionInterface` in `PhpDb\Sqlite\Container\MetadataInterfaceFactory::__invoke`.'
+count = 1
+
+[[issues]]
+file = "src/Container/MetadataInterfaceFactory.php"
+code = "unused-parameter"
+message = "Parameter `$requestedName` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoConnectionFactory.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$options` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoConnectionFactory.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `PhpDb\Adapter\Exception\InvalidConnectionParametersException::__construct`: expected `array<array-key, mixed>`, but found `nonnull`.'
+count = 1
+
+[[issues]]
+file = "src/Container/PdoConnectionFactory.php"
+code = "mixed-assignment"
+message = "Assigning `nonnull` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoConnectionFactory.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\InvalidConnectionParametersException` in `PhpDb\Sqlite\Container\PdoConnectionFactory::__invoke`.'
+count = 1
+
+[[issues]]
+file = "src/Container/PdoConnectionFactory.php"
+code = "unused-parameter"
+message = "Parameter `$container` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoConnectionFactory.php"
+code = "unused-parameter"
+message = "Parameter `$requestedName` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoDriverInterfaceFactory.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$options` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoDriverInterfaceFactory.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `Laminas\ServiceManager\ServiceManager::build`: expected `array<array-key, mixed>|null`, but found `nonnull`.'
+count = 1
+
+[[issues]]
+file = "src/Container/PdoDriverInterfaceFactory.php"
+code = "redundant-docblock-type"
+message = "Redundant docblock type for variable `$connectionInstance`."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoDriverInterfaceFactory.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `Laminas\ServiceManager\Exception\ServiceNotCreatedException` in `PhpDb\Sqlite\Container\PdoDriverInterfaceFactory::__invoke`.'
+count = 1
+
+[[issues]]
+file = "src/Container/PdoDriverInterfaceFactory.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `Psr\Container\ContainerExceptionInterface` in `PhpDb\Sqlite\Container\PdoDriverInterfaceFactory::__invoke`.'
+count = 1
+
+[[issues]]
+file = "src/Container/PdoDriverInterfaceFactory.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `Psr\Container\NotFoundExceptionInterface` in `PhpDb\Sqlite\Container\PdoDriverInterfaceFactory::__invoke`.'
+count = 1
+
+[[issues]]
+file = "src/Container/PdoDriverInterfaceFactory.php"
+code = "unused-parameter"
+message = "Parameter `$requestedName` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoResultFactory.php"
+code = "unused-parameter"
+message = "Parameter `$container` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoStatementFactory.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$options` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoStatementFactory.php"
+code = "possibly-null-argument"
+message = 'Argument #1 of method `PhpDb\Adapter\Driver\Pdo\Statement::__construct` is possibly `null`, but parameter type `array<array-key, mixed>` does not accept it.'
+count = 1
+
+[[issues]]
+file = "src/Container/PdoStatementFactory.php"
+code = "unused-parameter"
+message = "Parameter `$container` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PdoStatementFactory.php"
+code = "unused-parameter"
+message = "Parameter `$requestedName` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PlatformInterfaceFactory.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$options` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Container/PlatformInterfaceFactory.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "src/Container/PlatformInterfaceFactory.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `PhpDb\Exception\ContainerException` in `PhpDb\Sqlite\Container\PlatformInterfaceFactory::__invoke`.'
+count = 1
+
+[[issues]]
+file = "src/Container/PlatformInterfaceFactory.php"
+code = "unused-parameter"
+message = "Parameter `$container` is never used."
+count = 1
+
+[[issues]]
+file = "src/Container/PlatformInterfaceFactory.php"
+code = "unused-parameter"
+message = "Parameter `$requestedName` is never used."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$re` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "imprecise-type"
+message = "Type `array` in return type of `fetchPragma` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `PhpDb\Sqlite\Metadata\Source::getIdentifierChainRegularExpression`: expected `string`, but found `null|truthy-string`.'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `PhpDb\Sqlite\Metadata\Source::getIdentifierListRegularExpression`: expected `string`, but found `null|truthy-string`.'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `PhpDb\Sqlite\Metadata\Source::getIdentifierRegularExpression`: expected `string`, but found `null|truthy-literal-string`.'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "less-specific-nested-argument-type"
+message = "Argument type mismatch for argument #2 of `implode`: expected `array<array-key, Stringable|null|scalar>|null`, but provided type `array<array-key, mixed>` is less specific."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `PhpDb\Sqlite\Metadata\Source::parseTrigger`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `PhpDb\Sqlite\Metadata\Source::parseView`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `strtoupper`: expected `string`, but found `mixed`."
+count = 3
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `PhpDb\Sqlite\Metadata\Source::fetchPragma`: expected `null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-array-access"
+message = "Unsafe array access on type `mixed`."
+count = 25
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-array-assignment"
+message = "Unsafe array assignment on type `mixed`."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 10
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-operand"
+message = "Casting `mixed` to `bool`."
+count = 3
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-operand"
+message = "Invalid left operand: type `mixed` cannot be reliably used in string concatenation."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-operand"
+message = "Invalid right operand: type `mixed` cannot be reliably used in string concatenation."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-operand"
+message = "Left operand in binary operation has type `mixed`."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-property-type-coercion"
+message = "A value with a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas': array{}|non-empty-list<mixed>|null, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "null-array-access"
+message = "Cannot perform array access on `null`."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "null-iterator"
+message = "Iterating over `null` in `foreach`."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "nullable-return-statement"
+message = 'Function `PhpDb\Sqlite\Metadata\Source::getIdentifierChainRegularExpression` is declared to return `string` but possibly returns a nullable value (inferred as `null|truthy-string`).'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "nullable-return-statement"
+message = 'Function `PhpDb\Sqlite\Metadata\Source::getIdentifierListRegularExpression` is declared to return `string` but possibly returns a nullable value (inferred as `null|truthy-string`).'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "nullable-return-statement"
+message = 'Function `PhpDb\Sqlite\Metadata\Source::getIdentifierRegularExpression` is declared to return `string` but possibly returns a nullable value (inferred as `null|truthy-literal-string`).'
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "possibly-null-argument"
+message = "Argument #1 of function `preg_match` is possibly `null`, but parameter type `string` does not accept it."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "possibly-null-argument"
+message = "Argument #1 of function `strtoupper` is possibly `null`, but parameter type `string` does not accept it."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "possibly-null-array-index"
+message = "Possibly using `null` as an array index to access element."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "possibly-null-operand"
+message = "Possibly null middle operand used in string concatenation (type `null|string`)."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "possibly-undefined-string-array-index"
+message = "Possibly undefined array key `string('event_manipulation')` accessed on `array<string, string>`."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "possibly-undefined-string-array-index"
+message = "Possibly undefined array key `string('view_definition')` accessed on `array<array-key, string>`."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "property-type-coercion"
+message = "A value of a less specific type `array{'columns': non-empty-array<string, array<string, array<array-key, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': mixed, 'data_type': mixed, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': mixed}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'sqlite_columns': non-empty-list<mixed>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "property-type-coercion"
+message = "A value of a less specific type `array{'columns': non-empty-array<string, array<string, array<array-key, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': mixed, 'data_type': mixed, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': mixed}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "property-type-coercion"
+message = "A value of a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints': non-empty-array<string, array<string, array<array-key, array{'check_clause'?: string, 'columns'?: list<mixed>, 'constraint_name'?: mixed, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<mixed>, 'referenced_table_name'?: mixed, 'referenced_table_schema'?: string, 'table_name'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "property-type-coercion"
+message = "A value of a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names': non-empty-array<string, array<array-key, array{'check_option': string('NONE'), 'is_updatable': false, 'table_type': string('VIEW'), 'view_definition': null, ...<string, mixed>}|array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "property-type-coercion"
+message = "A value of a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers': non-empty-array<string, array<array-key, array{'action_condition': null, 'action_order': int(0), 'action_orientation': string('ROW'), 'action_reference_new_row': string('NEW'), 'action_reference_new_table': null, 'action_reference_old_row': string('OLD'), 'action_reference_old_table': null, 'action_statement': null, 'action_timing': null, 'created': null, 'event_manipulation': null, 'event_object_catalog': null, 'event_object_schema': string, 'event_object_table': mixed, 'trigger_name': mixed, ...<string, mixed>}|array{'action_condition': null, 'action_order': int(0), 'action_orientation': string('ROW'), 'action_reference_new_row': string('NEW'), 'action_reference_new_table': null, 'action_reference_old_row': string('OLD'), 'action_reference_old_table': null, 'action_statement': null, 'action_timing': null, 'created': null, 'event_manipulation': null, 'event_object_catalog': null, 'event_object_schema': string, 'event_object_table': mixed, 'trigger_name': mixed}|array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "redundant-condition"
+message = "This condition (type `true`) will always evaluate to true."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "reference-to-undefined-variable"
+message = "Reference created from a previously undefined variable `$matches`."
+count = 2
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "undefined-string-array-index"
+message = "Undefined array key 'sqlite_columns' accessed on `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "class-must-be-final"
+message = 'Class `PhpDb\Sqlite\Pdo\Connection` should be declared `final`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$connectionParameters` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "incompatible-parameter-type"
+message = 'Parameter `$name` of `PhpDb\Sqlite\Pdo\Connection::getlastgeneratedvalue()` expects type `string` but parent `PhpDb\Adapter\Driver\ConnectionInterface::getlastgeneratedvalue()` expects type `null|string`'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "invalid-type-cast"
+message = "Casting `mixed` to `array`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "less-specific-argument"
+message = "Argument type mismatch for argument #1 of `strtolower`: expected `string`, but provided type `array-key` is less specific."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "missing-constant-type"
+message = "Class constant `CURRENT_SCHEMA` is missing a type hint."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 3
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `PhpDb\Sqlite\Pdo\Connection::getLastGeneratedValue`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "redundant-condition"
+message = "This condition (type `true`) will always evaluate to true."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\InvalidConnectionParametersException` in `PhpDb\Sqlite\Pdo\Connection::getCurrentSchema`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Connection.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\RuntimeException` in `PhpDb\Sqlite\Pdo\Connection::getCurrentSchema`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "class-must-be-final"
+message = 'Class `PhpDb\Sqlite\Pdo\Driver` should be declared `final`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "imprecise-type"
+message = "Type `array` in parameter `$features` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "invalid-method-access"
+message = "Attempting to access a method on a non-object type (`resource`)."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "invalid-operand"
+message = "Left operand in `&&` operation is an `object`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "invalid-property-assignment-value"
+message = 'Invalid type for property `$connection`: expected `(PhpDb\Adapter\Driver\PdoConnectionInterface&PhpDb\Adapter\Driver\AbstractConnection&PhpDb\Adapter\Driver\PdoDriverAwareInterface)|PDO`, but got `(PhpDb\Adapter\Driver\PdoConnectionInterface&PhpDb\Adapter\Driver\PdoDriverAwareInterface)|PDO`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `PhpDb\Adapter\Driver\Pdo\Result::initialize`: expected `false|int|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "mixed-operand"
+message = "Left operand in `>` comparison has `mixed` type."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "non-existent-method"
+message = "Method `getlastgeneratedvalue` does not exist on type `PDO`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "possibly-invalid-argument"
+message = 'Possible argument type mismatch for argument #1 of `PhpDb\Adapter\Driver\Pdo\Result::initialize`: expected `PDOStatement`, but possibly received `PDOStatement|resource`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Driver.php"
+code = "redundant-logical-operation"
+message = "Redundant `&&` operation: left operand is always truthy and right operand is evaluated."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "class-must-be-final"
+message = 'Class `PhpDb\Sqlite\Pdo\Feature\SqliteRowCounter` should be declared `final`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "docblock-type-mismatch"
+message = "Docblock type mismatch for variable `$pdo`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "invalid-method-access"
+message = "Attempting to access a method on a non-object type (`false`)."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "missing-constructor"
+message = 'Class `PhpDb\Sqlite\Pdo\Feature\SqliteRowCounter` has typed properties without default values but no constructor to initialize them.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "mixed-array-access"
+message = "Unsafe array access on type `mixed`."
+count = 2
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 2
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "mixed-method-access"
+message = "Attempting to access a method on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "possibly-null-argument"
+message = 'Argument #1 of method `PhpDb\Sqlite\Pdo\Feature\SqliteRowCounter::getCountForSql` is possibly `null`, but parameter type `string` does not accept it.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `PDOException` in `PhpDb\Sqlite\Pdo\Feature\SqliteRowCounter::getCountForSql`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\InvalidQueryException` in `PhpDb\Sqlite\Pdo\Feature\SqliteRowCounter::getCountForStatement`.'
+count = 1
+
+[[issues]]
+file = "src/Pdo/Feature/SqliteRowCounter.php"
+code = "unhandled-thrown-type"
+message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\RuntimeException` in `PhpDb\Sqlite\Pdo\Feature\SqliteRowCounter::getCountForStatement`.'
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "imprecise-type"
+message = "Type `array` in return type of `processOffset` is imprecise, equivalent to `array<array-key, mixed>`."
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "incompatible-parameter-type"
+message = 'Parameter `$subject` of `PhpDb\Sqlite\Sql\SelectDecorator::setsubject()` expects type `PhpDb\Sql\Select` but parent `PhpDb\Sql\Platform\PlatformDecoratorInterface::setsubject()` expects type `PhpDb\Sql\PreparableSqlInterface|PhpDb\Sql\SqlInterface|null`'
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "invalid-property-assignment-value"
+message = "Invalid type for property `$specifications`: expected `array<array-key, array<array-key, mixed>>|array<array-key, string>`, but got `array{'limit': string('LIMIT 18446744073709551615'), ...<array-key, array<array-key, mixed>|string>}`."
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `PhpDb\Sqlite\Sql\SelectDecorator::processLimit`: expected `array<array-key, int>|array<array-key, string>|null`, but found `list{int|string}`.'
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "missing-override-attribute"
+message = 'Missing `#[Override]` attribute on overriding method `PhpDb\Sqlite\Sql\SelectDecorator::localizeVariables`.'
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "missing-override-attribute"
+message = 'Missing `#[Override]` attribute on overriding method `PhpDb\Sqlite\Sql\SelectDecorator::processLimit`.'
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "missing-override-attribute"
+message = 'Missing `#[Override]` attribute on overriding method `PhpDb\Sqlite\Sql\SelectDecorator::processOffset`.'
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "missing-override-attribute"
+message = 'Missing `#[Override]` attribute on overriding method `PhpDb\Sqlite\Sql\SelectDecorator::setSubject`.'
+count = 1
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "redundant-cast"
+message = "Redundant cast to `(string)`: the expression already has this type."
+count = 2
+
+[[issues]]
+file = "src/Sql/SelectDecorator.php"
+code = "uninitialized-property"
+message = 'Property `$subject` is not initialized in the constructor of class `PhpDb\Sqlite\Sql\SelectDecorator`.'
+count = 1
+
+[[issues]]
+file = "vendor/php-db/phpdb/src/Adapter/Driver/AbstractConnection.php"
+code = "uninitialized-property"
+message = 'Property `$driverName` is not initialized in the constructor of class `PhpDb\Sqlite\Pdo\Connection`.'
+count = 1
+
+[[issues]]
+file = "vendor/php-db/phpdb/src/Adapter/Driver/Pdo/AbstractPdo.php"
+code = "uninitialized-property"
+message = 'Property `$profiler` is not initialized in the constructor of class `PhpDb\Sqlite\Pdo\Driver`.'
+count = 1
+
+[[issues]]
+file = "vendor/php-db/phpdb/src/Adapter/Driver/Pdo/AbstractPdoConnection.php"
+code = "uninitialized-property"
+message = 'Property `$dsn` is not initialized in the constructor of class `PhpDb\Sqlite\Pdo\Connection`.'
+count = 1

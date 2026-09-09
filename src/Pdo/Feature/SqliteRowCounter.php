@@ -17,6 +17,20 @@ use function strtolower;
  */
 class SqliteRowCounter extends AbstractFeature
 {
+    public function getCountForSql(string $sql): int
+    {
+        if (empty($sql) || ! str_contains(strtolower($sql), 'select')) {
+            return 0;
+        }
+        $countSql = 'SELECT COUNT(*) as count FROM (' . $sql . ')';
+        /** @var \PDO $pdo */
+        $pdo      = $this->driver->getConnection()->getResource();
+        $result   = $pdo->query($countSql);
+        $countRow = $result->fetch(\PDO::FETCH_ASSOC);
+
+        return (int) $countRow['count'];
+    }
+
     public function getCountForStatement(Pdo\Statement $statement): int
     {
         $countStmt = clone $statement;
@@ -29,20 +43,6 @@ class SqliteRowCounter extends AbstractFeature
         $result   = $countStmt->execute();
         $countRow = $result->getResource()->fetch(\PDO::FETCH_ASSOC);
         unset($statement, $result);
-
-        return (int) $countRow['count'];
-    }
-
-    public function getCountForSql(string $sql): int
-    {
-        if (empty($sql) || ! str_contains(strtolower($sql), 'select')) {
-            return 0;
-        }
-        $countSql = 'SELECT COUNT(*) as count FROM (' . $sql . ')';
-        /** @var \PDO $pdo */
-        $pdo      = $this->driver->getConnection()->getResource();
-        $result   = $pdo->query($countSql);
-        $countRow = $result->fetch(\PDO::FETCH_ASSOC);
 
         return (int) $countRow['count'];
     }

@@ -17,12 +17,12 @@ final class PdoDriverInterfaceFactory
     public function __invoke(
         ContainerInterface&ServiceManager $container,
         string $requestedName,
-        ?array $options = null
+        ?array $options = null,
     ): PdoDriverInterface&Pdo\Driver {
         /** @var Pdo\Connection $connectionInstance */
         $connectionInstance = $container->build(
             Pdo\Connection::class,
-            $options
+            $options,
         );
 
         /** @var ResultInterface&Result $resultInstance */
@@ -31,7 +31,7 @@ final class PdoDriverInterfaceFactory
             : new Result();
 
         return new Pdo\Driver(
-            connection:$connectionInstance,
+            connection: $connectionInstance,
             statementPrototype: $container->build(Statement::class, $options['options'] ?? []),
             resultPrototype: $resultInstance,
             features: [new Pdo\Feature\SqliteRowCounter()],

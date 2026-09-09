@@ -15,14 +15,6 @@ use PhpDb\Metadata\MetadataInterface;
 
 final class ConfigProvider
 {
-    public function __invoke(): array
-    {
-        return [
-            'dependencies' => $this->getDependencies(),
-            //AdapterInterface::class => $this->getConfig(),
-        ];
-    }
-
     public function getConfig(): array
     {
         return [
@@ -59,6 +51,14 @@ final class ConfigProvider
                 AdapterPlatform::class => Container\PlatformInterfaceFactory::class,
                 Metadata\Source::class => Container\MetadataInterfaceFactory::class,
             ],
+        ];
+    }
+
+    public function __invoke(): array
+    {
+        return [
+            'dependencies' => $this->getDependencies(),
+            //AdapterInterface::class => $this->getConfig(),
         ];
     }
 }

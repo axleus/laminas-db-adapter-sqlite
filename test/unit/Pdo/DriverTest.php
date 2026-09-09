@@ -12,15 +12,58 @@ use PhpDb\Adapter\Driver\StatementInterface;
 use PhpDb\Exception\RuntimeException;
 use PhpDb\Sqlite\Pdo\Connection;
 use PhpDb\Sqlite\Pdo\Driver;
-use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-#[CoversMethod(Driver::class, 'getDatabasePlatformName')]
+#[CoversClass(Driver::class)]
 final class DriverTest extends TestCase
 {
     protected Driver $pdo;
+
+    /** @psalm-return array<array-key, array{0: string}> */
+    public static function getInvalidParamName(): array
+    {
+        return [
+            ['foo%'],
+            ['foo-'],
+            ['foo$'],
+            ['foo0!'],
+        ];
+    }
+
+    /** @psalm-return array<array-key, array{0: int|string, 1: null|string, 2: string}> */
+    public static function getParamsAndType(): array
+    {
+        return [
+            ['foo',     null,                                       ':foo'],
+            ['foo_bar', null,                                       ':foo_bar'],
+            ['123foo',  null,                                       ':123foo'],
+            [1,         null,                                       '?'],
+            ['1',       null,                                       '?'],
+            ['foo',     PdoDriverInterface::PARAMETERIZATION_NAMED, ':foo'],
+            ['foo_bar', PdoDriverInterface::PARAMETERIZATION_NAMED, ':foo_bar'],
+            ['123foo',  PdoDriverInterface::PARAMETERIZATION_NAMED, ':123foo'],
+            [1,         PdoDriverInterface::PARAMETERIZATION_NAMED, ':1'],
+            ['1',       PdoDriverInterface::PARAMETERIZATION_NAMED, ':1'],
+            [':foo',    null,                                       ':foo'],
+        ];
+    }
+
+    #[DataProvider('getParamsAndType')]
+    public function testFormatParameterName(int|string $name, ?string $type, string $expected): void
+    {
+        $result = $this->pdo->formatParameterName((string) $name, $type);
+        $this->assertEquals($expected, $result);
+    }
+
+    #[DataProvider('getInvalidParamName')]
+    public function testFormatParameterNameWithInvalidCharacters(string $name): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->pdo->formatParameterName($name);
+    }
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -42,48 +85,5 @@ final class DriverTest extends TestCase
             $statementPrototype,
             $this->createMock(ResultInterface::class),
         );
-    }
-
-    /** @psalm-return array<array-key, array{0: int|string, 1: null|string, 2: string}> */
-    public static function getParamsAndType(): array
-    {
-        return [
-            ['foo', null, ':foo'],
-            ['foo_bar', null, ':foo_bar'],
-            ['123foo', null, ':123foo'],
-            [1, null, '?'],
-            ['1', null, '?'],
-            ['foo', PdoDriverInterface::PARAMETERIZATION_NAMED, ':foo'],
-            ['foo_bar', PdoDriverInterface::PARAMETERIZATION_NAMED, ':foo_bar'],
-            ['123foo', PdoDriverInterface::PARAMETERIZATION_NAMED, ':123foo'],
-            [1, PdoDriverInterface::PARAMETERIZATION_NAMED, ':1'],
-            ['1', PdoDriverInterface::PARAMETERIZATION_NAMED, ':1'],
-            [':foo', null, ':foo'],
-        ];
-    }
-
-    #[DataProvider('getParamsAndType')]
-    public function testFormatParameterName(int|string $name, ?string $type, string $expected): void
-    {
-        $result = $this->pdo->formatParameterName((string) $name, $type);
-        $this->assertEquals($expected, $result);
-    }
-
-    /** @psalm-return array<array-key, array{0: string}> */
-    public static function getInvalidParamName(): array
-    {
-        return [
-            ['foo%'],
-            ['foo-'],
-            ['foo$'],
-            ['foo0!'],
-        ];
-    }
-
-    #[DataProvider('getInvalidParamName')]
-    public function testFormatParameterNameWithInvalidCharacters(string $name): void
-    {
-        $this->expectException(RuntimeException::class);
-        $this->pdo->formatParameterName($name);
     }
 }

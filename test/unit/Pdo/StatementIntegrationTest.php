@@ -23,42 +23,54 @@ final class StatementIntegrationTest extends TestCase
 
     public function testStatementExecuteWillConvertPhpBoolToPdoBoolWhenBinding(): void
     {
-        $this->pdoStatementMock->expects($this->any())->method('bindParam')->with(
-            $this->equalTo(':foo'),
-            $this->equalTo(false),
-            $this->equalTo(PDO::PARAM_BOOL)
-        );
+        $this->pdoStatementMock
+            ->expects($this->any())
+            ->method('bindParam')
+            ->with(
+                $this->equalTo(':foo'),
+                $this->equalTo(false),
+                $this->equalTo(PDO::PARAM_BOOL),
+            );
         $this->statement->execute(['foo' => false]);
+    }
+
+    public function testStatementExecuteWillUsePdoIntForIntWhenBinding(): void
+    {
+        $this->pdoStatementMock
+            ->expects($this->any())
+            ->method('bindParam')
+            ->with(
+                $this->equalTo(':foo'),
+                $this->equalTo(123),
+                $this->equalTo(PDO::PARAM_INT),
+            );
+        $this->statement->execute(['foo' => 123]);
     }
 
     public function testStatementExecuteWillUsePdoStrByDefaultWhenBinding(): void
     {
-        $this->pdoStatementMock->expects($this->any())->method('bindParam')->with(
-            $this->equalTo(':foo'),
-            $this->equalTo('bar'),
-            $this->equalTo(PDO::PARAM_STR)
-        );
+        $this->pdoStatementMock
+            ->expects($this->any())
+            ->method('bindParam')
+            ->with(
+                $this->equalTo(':foo'),
+                $this->equalTo('bar'),
+                $this->equalTo(PDO::PARAM_STR),
+            );
         $this->statement->execute(['foo' => 'bar']);
     }
 
     public function testStatementExecuteWillUsePdoStrForStringIntegerWhenBinding(): void
     {
-        $this->pdoStatementMock->expects($this->any())->method('bindParam')->with(
-            $this->equalTo(':foo'),
-            $this->equalTo('123'),
-            $this->equalTo(PDO::PARAM_STR)
-        );
+        $this->pdoStatementMock
+            ->expects($this->any())
+            ->method('bindParam')
+            ->with(
+                $this->equalTo(':foo'),
+                $this->equalTo('123'),
+                $this->equalTo(PDO::PARAM_STR),
+            );
         $this->statement->execute(['foo' => '123']);
-    }
-
-    public function testStatementExecuteWillUsePdoIntForIntWhenBinding(): void
-    {
-        $this->pdoStatementMock->expects($this->any())->method('bindParam')->with(
-            $this->equalTo(':foo'),
-            $this->equalTo(123),
-            $this->equalTo(PDO::PARAM_INT)
-        );
-        $this->statement->execute(['foo' => 123]);
     }
 
     /**
@@ -69,16 +81,16 @@ final class StatementIntegrationTest extends TestCase
     protected function setUp(): void
     {
         $driver = $this->getMockBuilder(Driver::class)
-                       ->onlyMethods(['createResult'])
-                       ->disableOriginalConstructor()
-                       ->getMock();
+            ->onlyMethods(['createResult'])
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $this->statement = new Statement();
         $this->statement->setDriver($driver);
         $this->statement->initialize(new CtorlessPdo(
             $this->pdoStatementMock = $this->getMockBuilder(PDOStatement::class)
-                                           ->onlyMethods(['execute', 'bindParam'])
-                                           ->getMock()
+                ->onlyMethods(['execute', 'bindParam'])
+                ->getMock(),
         ));
     }
 }

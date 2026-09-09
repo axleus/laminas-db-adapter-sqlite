@@ -27,7 +27,7 @@ final class PdoDriverInterfaceFactoryTest extends TestCase
         $instance = $factory(
             $this->container,
             Driver::class,
-            $this->container->get('config')[AdapterInterface::class]
+            $this->container->get('config')[AdapterInterface::class],
         );
 
         self::assertInstanceOf(PdoDriverInterface::class, $instance);

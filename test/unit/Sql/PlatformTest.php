@@ -16,11 +16,6 @@ final class PlatformTest extends TestCase
 {
     private Platform $platform;
 
-    protected function setUp(): void
-    {
-        $this->platform = new Platform();
-    }
-
     public function testConstructorSetsTypeDecorators(): void
     {
         self::assertInstanceOf(Platform::class, $this->platform);
@@ -34,5 +29,10 @@ final class PlatformTest extends TestCase
 
         self::assertArrayHasKey(Select::class, $decorators);
         self::assertInstanceOf(SelectDecorator::class, $decorators[Select::class]);
+    }
+
+    protected function setUp(): void
+    {
+        $this->platform = new Platform();
     }
 }

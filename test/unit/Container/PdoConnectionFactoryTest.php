@@ -24,16 +24,6 @@ final class PdoConnectionFactoryTest extends TestCase
         self::assertInstanceOf(Connection::class, $connection);
     }
 
-    public function testInvokeWithoutConnectionConfigThrows(): void
-    {
-        $containerMock = $this->createMock(ContainerInterface::class);
-
-        $this->expectException(InvalidConnectionParametersException::class);
-
-        $factory = new PdoConnectionFactory();
-        $factory($containerMock, Connection::class, []);
-    }
-
     public function testInvokeWithNullOptionsThrows(): void
     {
         $containerMock = $this->createMock(ContainerInterface::class);
@@ -42,5 +32,15 @@ final class PdoConnectionFactoryTest extends TestCase
 
         $factory = new PdoConnectionFactory();
         $factory($containerMock, Connection::class, null);
+    }
+
+    public function testInvokeWithoutConnectionConfigThrows(): void
+    {
+        $containerMock = $this->createMock(ContainerInterface::class);
+
+        $this->expectException(InvalidConnectionParametersException::class);
+
+        $factory = new PdoConnectionFactory();
+        $factory($containerMock, Connection::class, []);
     }
 }

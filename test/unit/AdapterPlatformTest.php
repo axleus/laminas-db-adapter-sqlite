@@ -17,25 +17,6 @@ final class AdapterPlatformTest extends TestCase
 {
     private AdapterPlatform $platform;
 
-    protected function setUp(): void
-    {
-        $pdoMock        = $this->createMock(PDO::class);
-        $this->platform = new AdapterPlatform($pdoMock);
-    }
-
-    public function testGetNameReturnsSqlite(): void
-    {
-        $pdoMock  = $this->createMock(PDO::class);
-        $platform = new AdapterPlatform($pdoMock);
-
-        self::assertSame('SQLite', $platform->getName());
-    }
-
-    public function testPlatformNameConstant(): void
-    {
-        self::assertSame('SQLite', AdapterPlatform::PLATFORM_NAME);
-    }
-
     public function testConstructWithPdo(): void
     {
         $pdoMock  = $this->createMock(PDO::class);
@@ -52,6 +33,34 @@ final class AdapterPlatformTest extends TestCase
         self::assertInstanceOf(AdapterPlatform::class, $platform);
     }
 
+    public function testGetIdentifierSeparator(): void
+    {
+        self::assertEquals('.', $this->platform->getIdentifierSeparator());
+    }
+
+    public function testGetName(): void
+    {
+        self::assertEquals('SQLite', $this->platform->getName());
+    }
+
+    public function testGetNameReturnsSqlite(): void
+    {
+        $pdoMock  = $this->createMock(PDO::class);
+        $platform = new AdapterPlatform($pdoMock);
+
+        self::assertSame('SQLite', $platform->getName());
+    }
+
+    public function testGetQuoteIdentifierSymbol(): void
+    {
+        self::assertEquals('"', $this->platform->getQuoteIdentifierSymbol());
+    }
+
+    public function testGetQuoteValueSymbol(): void
+    {
+        self::assertEquals("'", $this->platform->getQuoteValueSymbol());
+    }
+
     public function testGetSqlPlatformDecorator(): void
     {
         $pdoMock  = $this->createMock(PDO::class);
@@ -62,14 +71,9 @@ final class AdapterPlatformTest extends TestCase
         self::assertInstanceOf(SqlPlatformDecorator::class, $decorator);
     }
 
-    public function testGetName(): void
+    public function testPlatformNameConstant(): void
     {
-        self::assertEquals('SQLite', $this->platform->getName());
-    }
-
-    public function testGetQuoteIdentifierSymbol(): void
-    {
-        self::assertEquals('"', $this->platform->getQuoteIdentifierSymbol());
+        self::assertSame('SQLite', AdapterPlatform::PLATFORM_NAME);
     }
 
     public function testQuoteIdentifier(): void
@@ -84,17 +88,64 @@ final class AdapterPlatformTest extends TestCase
         self::assertEquals('"schema"."identifier"', $this->platform->quoteIdentifierChain(['schema', 'identifier']));
     }
 
-    public function testGetQuoteValueSymbol(): void
+    public function testQuoteIdentifierInFragment(): void
     {
-        self::assertEquals("'", $this->platform->getQuoteValueSymbol());
+        self::assertEquals('"foo"."bar"', $this->platform->quoteIdentifierInFragment('foo.bar'));
+        self::assertEquals('"foo" as "bar"', $this->platform->quoteIdentifierInFragment('foo as bar'));
+
+        // single char words
+        self::assertEquals(
+            '("foo"."bar" = "boo"."baz")',
+            $this->platform->quoteIdentifierInFragment('(foo.bar = boo.baz)', ['(', ')', '=']),
+        );
+
+        // case insensitive safe words
+        self::assertEquals(
+            '("foo"."bar" = "boo"."baz") AND ("foo"."baz" = "boo"."baz")',
+            $this->platform->quoteIdentifierInFragment(
+                '(foo.bar = boo.baz) AND (foo.baz = boo.baz)',
+                ['(', ')', '=', 'and'],
+            ),
+        );
+
+        // case insensitive safe words in field
+        self::assertEquals(
+            '("foo"."bar" = "boo".baz) AND ("foo".baz = "boo".baz)',
+            $this->platform->quoteIdentifierInFragment(
+                '(foo.bar = boo.baz) AND (foo.baz = boo.baz)',
+                ['(', ')', '=', 'and', 'bAz'],
+            ),
+        );
     }
 
-    public function testQuoteValueThrowsExeceptionWithoutDriverSupport(): void
+    public function testQuoteTrustedValue(): void
     {
-        $platform = new AdapterPlatform();
-        //$this->expectNotToPerformAssertions();
-        $this->expectException(VunerablePlatformQuoteException::class);
-        $platform->quoteValue('value');
+        self::assertEquals("'value'", $this->platform->quoteTrustedValue('value'));
+        self::assertEquals("'Foo O\\'Bar'", $this->platform->quoteTrustedValue("Foo O'Bar"));
+        self::assertEquals(
+            '\'\\\'; DELETE FROM some_table; -- \'',
+            $this->platform->quoteTrustedValue('\'; DELETE FROM some_table; -- '),
+        );
+
+        //                   '\\\'; DELETE FROM some_table; -- '  <- actual below
+        self::assertEquals(
+            "'\\\\\\'; DELETE FROM some_table; -- '",
+            $this->platform->quoteTrustedValue('\\\'; DELETE FROM some_table; -- '),
+        );
+    }
+
+    public function testQuoteValue(): void
+    {
+        self::assertEquals("'value'", @$this->platform->quoteValue('value'));
+        self::assertEquals("'Foo O\\'Bar'", @$this->platform->quoteValue("Foo O'Bar"));
+        self::assertEquals(
+            '\'\\\'; DELETE FROM some_table; -- \'',
+            @$this->platform->quoteValue('\'; DELETE FROM some_table; -- '),
+        );
+        self::assertEquals(
+            "'\\\\\\'; DELETE FROM some_table; -- '",
+            @$this->platform->quoteValue('\\\'; DELETE FROM some_table; -- '),
+        );
     }
 
     public function testQuoteValueList(): void
@@ -106,68 +157,17 @@ final class AdapterPlatformTest extends TestCase
         self::assertEquals($expected, $actual);
     }
 
-    public function testQuoteValue(): void
+    public function testQuoteValueThrowsExeceptionWithoutDriverSupport(): void
     {
-        self::assertEquals("'value'", @$this->platform->quoteValue('value'));
-        self::assertEquals("'Foo O\\'Bar'", @$this->platform->quoteValue("Foo O'Bar"));
-        self::assertEquals(
-            '\'\\\'; DELETE FROM some_table; -- \'',
-            @$this->platform->quoteValue('\'; DELETE FROM some_table; -- ')
-        );
-        self::assertEquals(
-            "'\\\\\\'; DELETE FROM some_table; -- '",
-            @$this->platform->quoteValue('\\\'; DELETE FROM some_table; -- ')
-        );
+        $platform = new AdapterPlatform();
+        //$this->expectNotToPerformAssertions();
+        $this->expectException(VunerablePlatformQuoteException::class);
+        $platform->quoteValue('value');
     }
 
-    public function testQuoteTrustedValue(): void
+    protected function setUp(): void
     {
-        self::assertEquals("'value'", $this->platform->quoteTrustedValue('value'));
-        self::assertEquals("'Foo O\\'Bar'", $this->platform->quoteTrustedValue("Foo O'Bar"));
-        self::assertEquals(
-            '\'\\\'; DELETE FROM some_table; -- \'',
-            $this->platform->quoteTrustedValue('\'; DELETE FROM some_table; -- ')
-        );
-
-        //                   '\\\'; DELETE FROM some_table; -- '  <- actual below
-        self::assertEquals(
-            "'\\\\\\'; DELETE FROM some_table; -- '",
-            $this->platform->quoteTrustedValue('\\\'; DELETE FROM some_table; -- ')
-        );
-    }
-
-    public function testGetIdentifierSeparator(): void
-    {
-        self::assertEquals('.', $this->platform->getIdentifierSeparator());
-    }
-
-    public function testQuoteIdentifierInFragment(): void
-    {
-        self::assertEquals('"foo"."bar"', $this->platform->quoteIdentifierInFragment('foo.bar'));
-        self::assertEquals('"foo" as "bar"', $this->platform->quoteIdentifierInFragment('foo as bar'));
-
-        // single char words
-        self::assertEquals(
-            '("foo"."bar" = "boo"."baz")',
-            $this->platform->quoteIdentifierInFragment('(foo.bar = boo.baz)', ['(', ')', '='])
-        );
-
-        // case insensitive safe words
-        self::assertEquals(
-            '("foo"."bar" = "boo"."baz") AND ("foo"."baz" = "boo"."baz")',
-            $this->platform->quoteIdentifierInFragment(
-                '(foo.bar = boo.baz) AND (foo.baz = boo.baz)',
-                ['(', ')', '=', 'and']
-            )
-        );
-
-        // case insensitive safe words in field
-        self::assertEquals(
-            '("foo"."bar" = "boo".baz) AND ("foo".baz = "boo".baz)',
-            $this->platform->quoteIdentifierInFragment(
-                '(foo.bar = boo.baz) AND (foo.baz = boo.baz)',
-                ['(', ')', '=', 'and', 'bAz']
-            )
-        );
+        $pdoMock        = $this->createMock(PDO::class);
+        $this->platform = new AdapterPlatform($pdoMock);
     }
 }
