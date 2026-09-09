@@ -39,12 +39,27 @@ final class ConfigProviderTest extends TestCase
         MetadataInterface::class      => Metadata\Source::class,
     ];
 
+    public const EXPECTED_FACTORIES = [
+        Pdo\Connection::class  => Container\PdoConnectionFactory::class,
+        Pdo\Driver::class      => Container\PdoDriverInterfaceFactory::class,
+        Result::class          => Container\PdoResultFactory::class,
+        Statement::class       => Container\PdoStatementFactory::class,
+        AdapterPlatform::class => Container\PlatformInterfaceFactory::class,
+        Metadata\Source::class => Container\MetadataInterfaceFactory::class,
+    ];
+
     private ConfigProvider $configProvider;
 
     public function testGetDependenciesContainsExpectedAliases(): void
     {
         $config = $this->configProvider->getDependencies();
         self::assertEquals(self::EXPECTED_ALIASES, $config['aliases']);
+    }
+
+    public function testGetDependenciesContainsExpectedFactories(): void
+    {
+        $config = $this->configProvider->getDependencies();
+        self::assertSame(self::EXPECTED_FACTORIES, $config['factories']);
     }
 
     public function testGetDependenciesContainsMetadataAlias(): void

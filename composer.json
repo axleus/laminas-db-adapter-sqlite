@@ -21,7 +21,8 @@
             "php": "8.3.99"
         },
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "infection/extension-installer": true
         }
     },
     "extra": {
@@ -37,6 +38,7 @@
     "require-dev": {
         "ext-pdo": "*",
         "ext-pdo_sqlite": "*",
+        "infection/infection": "^0.34.1",
         "php-db/phpdb-qa-tools": "0.1.x-dev",
         "phpunit/phpunit": "^11.5.42"
     },
@@ -70,6 +72,7 @@
             "mago lint --fix"
         ],
         "static-analysis": "mago analyze",
+        "mutation-test": "infection",
         "test": "phpunit --colors=always --testsuite \"unit test\"",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
         "test-integration": "phpunit --colors=always --testsuite \"integration test\"",

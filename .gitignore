@@ -6,3 +6,6 @@
 /xdebug_filter.php
 /clover.xml
 /test/coverage/
+/infection.json5
+/infection.log
+/summary.log

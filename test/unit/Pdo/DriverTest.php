@@ -12,12 +12,12 @@ use PhpDb\Adapter\Driver\StatementInterface;
 use PhpDb\Exception\RuntimeException;
 use PhpDb\Sqlite\Pdo\Connection;
 use PhpDb\Sqlite\Pdo\Driver;
-use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-#[CoversMethod(Driver::class, 'getDatabasePlatformName')]
+#[CoversClass(Driver::class)]
 final class DriverTest extends TestCase
 {
     protected Driver $pdo;
